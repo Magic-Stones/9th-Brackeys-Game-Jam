@@ -33,7 +33,7 @@ public class MagicBullet : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
-            // DamagePopUp.Instantiate(enemy.Position(), damage);
+            DamagePopUp.Instantiate(enemy.Position(), 10);
 
             enemy.Knockback(transform, knockbackPower);
 

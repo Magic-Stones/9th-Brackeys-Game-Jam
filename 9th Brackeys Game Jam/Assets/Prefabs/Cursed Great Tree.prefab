@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4277676642030132334}
   - component: {fileID: 6687326577653172566}
-  - component: {fileID: 5432333968805648461}
-  m_Layer: 0
+  - component: {fileID: 9024172844025600289}
+  - component: {fileID: 6471132616658766329}
+  m_Layer: 6
   m_Name: Cursed Great Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &5432333968805648461
-EdgeCollider2D:
+--- !u!61 &9024172844025600289
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,15 +99,29 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.91}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 3}
+    newSize: {x: 2, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.01}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.5151174, y: -1.0112449}
-  - {x: -0.45564285, y: -1.0162616}
-  - {x: -0.19258714, y: -0.63322395}
-  - {x: 0.17068818, y: -0.6338946}
-  - {x: 0.5136229, y: -1.0112448}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+--- !u!114 &6471132616658766329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7501741464445091277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077d8b49803ec9841bad989c2e1c1217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthPoints: 100

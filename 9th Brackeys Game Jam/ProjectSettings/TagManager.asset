@@ -11,8 +11,8 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
-  - 
+  - Cursed Tree
+  - Tree of Life
   - 
   - 
   - 
@@ -55,4 +55,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2275991197
+    locked: 0
+  - name: Damage Pop Up Text
+    uniqueID: 2744441549
+    locked: 0
+  - name: Health Bar
+    uniqueID: 4031629713
     locked: 0

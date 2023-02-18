@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fcb9751a26edd45acc00b5f5eceeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePopUpPrefab: {fileID: 0}
+  damagePopUpPrefab: {fileID: 3987358465014982913, guid: c77da20df422a2647abac84c57740ddc, type: 3}
   dialogueBubblePrefab: {fileID: 0}

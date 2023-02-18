@@ -24,6 +24,9 @@ public class CombatAim : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private LayerMask enemyLayer;
 
+    [SerializeField] private float _triggerChopRange = 1f;
+    [SerializeField] private LayerMask _cursedTreeLayer;
+
     public delegate void VoidDelegates();
     public VoidDelegates OnAttacking;
     private bool _activeOnAttacking = false;
@@ -41,6 +44,7 @@ public class CombatAim : MonoBehaviour
     void Update()
     {
         CheckAimState();
+        TriggerChop();
     }
 
     private void CheckAimState()
@@ -119,5 +123,36 @@ public class CombatAim : MonoBehaviour
     private void Shoot()
     {
         Instantiate(bulletPrefab, aimPoint.position, aimPoint.rotation);
+    }
+
+    private void TriggerChop()
+    {
+        Collider2D[] greatTree = Physics2D.OverlapCircleAll(transform.position, _triggerChopRange, _cursedTreeLayer);
+        foreach (Collider2D tree in greatTree)
+        {
+            CursedTree cursedTree = tree.GetComponent<CursedTree>();
+            if (cursedTree != null)
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    cursedTree.ChopTree();
+                }
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    cursedTree.axe.SetActive(true);
+                }
+                else if (Input.GetKeyUp(KeyCode.E))
+                {
+                    cursedTree.axe.SetActive(false);
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _triggerChopRange);
     }
 }

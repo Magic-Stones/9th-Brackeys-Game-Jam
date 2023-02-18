@@ -26,7 +26,7 @@ public class GhostAI : MonoBehaviour, IEnemy
 
     public Vector3 Position()
     {
-        return transform.position;
+        return transform.localPosition;
     }
 
     // Start is called before the first frame update

@@ -5,7 +5,10 @@ using UnityEngine.Events;
 
 public class PlayerStatus : MonoBehaviour
 {
-    [SerializeField] private int _healthPoints = 10;
+    [SerializeField] private int _maxHealthPoints = 10;
+    [SerializeField] private int _healthPoints;
+    public float GetHealthPointsNormalized { get { return (float) _healthPoints / _maxHealthPoints; } }
+
     [SerializeField] private float _moveSpeed = 1f;
     public float GetMoveSpeed { get { return _moveSpeed; } }
 
@@ -17,6 +20,8 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
+
+        _healthPoints = _maxHealthPoints;
     }
 
     // Update is called once per frame
