@@ -44,7 +44,7 @@ public class CombatAim : MonoBehaviour
     void Update()
     {
         CheckAimState();
-        TriggerChop();
+        // TriggerChop();
     }
 
     private void CheckAimState()

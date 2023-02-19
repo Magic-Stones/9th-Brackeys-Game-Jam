@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBarUI : MonoBehaviour
 {
     private const float DISPLAY_DAMAGE_TIMER_MAX = 1f;
     private float _displayDamageTimer;
@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour
         _healthBar = transform.Find("Health Bar").GetComponent<Image>();
         _damageBar = transform.Find("Damage Bar").GetComponent<Image>();
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {

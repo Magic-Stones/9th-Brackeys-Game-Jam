@@ -5,6 +5,9 @@ using UnityEngine;
 public class MagicBullet : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
+    [Range(0f, 1f)]
+    [SerializeField] private float damageReduction;
+
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float knockbackPower = 1f;
     [SerializeField] private float startLifetime = 1f;
@@ -33,11 +36,11 @@ public class MagicBullet : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
-            DamagePopUp.Instantiate(enemy.Position(), 10);
+            DamagePopUp.Instantiate(enemy.Position, damage);
 
             enemy.Knockback(transform, knockbackPower);
 
-            Destroy(gameObject);
+            damage = Mathf.CeilToInt(damage * damageReduction);
         }
     }
 }

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5912620643119093384}
   - component: {fileID: 3226659058624098468}
   - component: {fileID: 5229366610398804263}
-  - component: {fileID: 3461512221851874480}
+  - component: {fileID: 5739510972780073833}
   m_Layer: 0
-  m_Name: Magic Bullet
+  m_Name: Purifying Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 886542063707561484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -255924857
   m_SortingLayer: 4
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.08515483, g: 0.8679245, b: 0.33702528, a: 1}
+  m_Color: {r: 0.3364165, g: 1, b: 0.30566037, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,7 +176,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.20338684
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -197,8 +197,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.19622639, g: 0.49056602, b: 0.2169072, a: 1}
-      key1: {r: 0.08627451, g: 0.8666667, b: 0.3372549, a: 1}
+      key0: {r: 0.3372549, g: 1, b: 0.30588236, a: 1}
+      key1: {r: 0.19607843, g: 0.49019608, b: 0.21568628, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -233,7 +233,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &3461512221851874480
+--- !u!114 &5739510972780073833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,11 +242,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 886542063707561484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c3f3136b8920c45834242fdfff70ee, type: 3}
+  m_Script: {fileID: 11500000, guid: ed4022dfd9ab4b142b186fd529802449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  damageReduction: 0.5
+  damage: 10
   projectileSpeed: 10
-  knockbackPower: 1
-  startLifetime: 1

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cursed Tree
   layers:
   - Default
   - TransparentFX
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2275991197
+    locked: 0
+  - name: Foreground
+    uniqueID: 2731478735
     locked: 0
   - name: Damage Pop Up Text
     uniqueID: 2744441549

@@ -4,44 +4,51 @@ using UnityEngine;
 
 public class GhostAI : MonoBehaviour, IEnemy
 {
-    [SerializeField] private int healthPoints = 100;
+    [SerializeField] private int maxHealthPoints = 100;
+    private int _healthPoints;
+    public float GetHealthPointsNormalized { get { return (float)_healthPoints / maxHealthPoints; } }
+
     [SerializeField] private float moveSpeed = 1f;
-    private float additionalMoveSpeed;
+    private float _additionalMoveSpeed;
 
     [SerializeField] private int damage = 1;
     [SerializeField] private float knockbackPower = 1f;
 
+    public Vector3 Position { get { return transform.position; } }
+
     [SerializeField] private GameObject targetObject;
-    private Transform target;
+    private Transform _target;
 
     [SerializeField] private AnimationClip faceUp, faceDown;
-    private bool isMoving = true;
-    private float setWaitToMove = 2f, waitToMove;
+    private bool _isMoving = true;
+    private float _setWaitToMove = 2f, _waitToMove;
 
     [SerializeField] private GameObject lootDrop;
-    private bool lootDropChance;
+    private bool _lootDropChance;
     
-    private Rigidbody2D rb2D;
-    private Animator animator;
-
-    public Vector3 Position()
-    {
-        return transform.localPosition;
-    }
+    private Rigidbody2D _rb2D;
+    private Animator _animator;
+    private EnemySpawner _enemySpawner;
+    private GameHandler handler;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        handler = FindObjectOfType<GameHandler>();
+        _enemySpawner = FindObjectOfType<EnemySpawner>();
+        _rb2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
 
-        additionalMoveSpeed = moveSpeed + 1.25f;
-        moveSpeed = Random.Range(moveSpeed, additionalMoveSpeed);
+        handler.OnGameWin += () => gameObject.SetActive(false);
 
-        waitToMove = setWaitToMove;
+        _healthPoints = maxHealthPoints;
+        _additionalMoveSpeed = moveSpeed + 1.75f;
+        moveSpeed = Random.Range(moveSpeed, _additionalMoveSpeed);
 
-        target = GameObject.FindGameObjectWithTag(targetObject.tag).transform;
-        lootDropChance = 0.75f > Random.Range(0f, 1f);
+        _waitToMove = _setWaitToMove;
+
+        _target = GameObject.FindGameObjectWithTag(targetObject.tag).transform;
+        _lootDropChance = 0.75f > Random.Range(0f, 1f);
     }
 
     // Update is called once per frame
@@ -57,9 +64,9 @@ public class GhostAI : MonoBehaviour, IEnemy
 
     public void TakeDamage(int amount)
     {
-        healthPoints -= amount;
+        _healthPoints -= amount;
 
-        if (healthPoints <= 0)
+        if (_healthPoints <= 0)
         {
             Death();
         }
@@ -67,19 +74,19 @@ public class GhostAI : MonoBehaviour, IEnemy
 
     public void ChaseTarget()
     {
-        if (target != null)
+        if (_target != null)
         {
-            if (isMoving)
+            if (_isMoving)
             {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.fixedDeltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, _target.position, moveSpeed * Time.fixedDeltaTime);
             }
             else
             {
-                waitToMove -= Time.deltaTime;
-                if (waitToMove <= 0f)
+                _waitToMove -= Time.deltaTime;
+                if (_waitToMove <= 0f)
                 {
-                    waitToMove = setWaitToMove;
-                    isMoving = true;
+                    _waitToMove = _setWaitToMove;
+                    _isMoving = true;
                 }
             }
         }
@@ -88,11 +95,11 @@ public class GhostAI : MonoBehaviour, IEnemy
     public void Knockback(Transform dealer, float knockbackPower)
     {
         StopAllCoroutines();
-        rb2D.isKinematic = false;
+        _rb2D.isKinematic = false;
 
         Vector2 direction = (transform.position - dealer.position).normalized;
         float knockbackDelay = knockbackPower * 0.5f;
-        rb2D.AddForce(direction * knockbackPower, ForceMode2D.Impulse);
+        _rb2D.AddForce(direction * knockbackPower, ForceMode2D.Impulse);
 
         StartCoroutine(RecoverFromKnockback(knockbackDelay));
     }
@@ -100,8 +107,8 @@ public class GhostAI : MonoBehaviour, IEnemy
     private IEnumerator RecoverFromKnockback(float delay)
     {
         yield return new WaitForSeconds(delay);
-        rb2D.velocity = Vector2.zero;   
-        rb2D.isKinematic = true;
+        _rb2D.velocity = Vector2.zero;   
+        _rb2D.isKinematic = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -109,7 +116,7 @@ public class GhostAI : MonoBehaviour, IEnemy
         PlayerStatus player;
         if (collision.collider.name.Equals(targetObject.name))
         {
-            isMoving = false;
+            _isMoving = false;
 
             player = collision.collider.GetComponent<PlayerStatus>();
             player.TakeDamage(damage);
@@ -119,20 +126,22 @@ public class GhostAI : MonoBehaviour, IEnemy
 
     public void Death()
     {
-        if (lootDropChance) Instantiate(lootDrop, transform.position, Quaternion.identity);
+        // if (_lootDropChance)
+        Instantiate(lootDrop, transform.position, Quaternion.identity);
+        _enemySpawner.ReduceSpawnCount();
 
         Destroy(gameObject);
     }
 
     public void FacingTarget()
     {
-        if (transform.position.y > target.position.y)
+        if (transform.position.y > _target.position.y)
         {
-            animator.Play(faceDown.name);
+            _animator.Play(faceDown.name);
         }
-        else if (transform.position.y < target.position.y)
+        else if (transform.position.y < _target.position.y)
         {
-            animator.Play(faceUp.name);
+            _animator.Play(faceUp.name);
         }
     }
 
