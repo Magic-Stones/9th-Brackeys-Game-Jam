@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6687326577653172566}
   - component: {fileID: 9024172844025600289}
   - component: {fileID: 6471132616658766329}
-  - component: {fileID: -3775591793762788516}
+  - component: {fileID: 8342649891407313868}
   m_Layer: 6
   m_Name: Cursed Great Tree
   m_TagString: Untagged
@@ -159,8 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
-  axe: {fileID: 0}
---- !u!114 &-3775591793762788516
+--- !u!114 &8342649891407313868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,9 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c25c1f2902b634b907bd0aa49771a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingOrder: 5000
-  offsetSorting: 1
-  runOnce: 0
+  setSortingOrder: 5000
+  sortOffset: 1
 --- !u!1001 &6992704743479881466
 PrefabInstance:
   m_ObjectHideFlags: 0

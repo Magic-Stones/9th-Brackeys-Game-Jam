@@ -7,16 +7,14 @@ public class PurifyingEnergy : MonoBehaviour
     [SerializeField] private int damage = 10;
     [SerializeField] private float projectileSpeed = 10f;
 
-    private bool goRandomDirection = false;
-
-    private Rigidbody2D rb2D;
+    private Rigidbody2D _rb2D;
     private Transform _cursedTreeTransform;
     private CursedTree _cursedTree;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        _rb2D = GetComponent<Rigidbody2D>();
 
         _cursedTreeTransform = GameObject.FindGameObjectWithTag("Cursed Tree").transform;
         _cursedTree = FindObjectOfType<CursedTree>();

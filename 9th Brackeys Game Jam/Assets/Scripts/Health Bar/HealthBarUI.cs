@@ -12,11 +12,11 @@ public class HealthBarUI : MonoBehaviour
     private Image _healthBar;
     private Image _damageBar;
 
-    private PlayerStatus _player;
+    private Player _player;
 
     void Awake()
     {
-        _player = FindObjectOfType<PlayerStatus>();
+        _player = FindObjectOfType<Player>();
 
         _healthBar = transform.Find("Health Bar").GetComponent<Image>();
         _damageBar = transform.Find("Damage Bar").GetComponent<Image>();

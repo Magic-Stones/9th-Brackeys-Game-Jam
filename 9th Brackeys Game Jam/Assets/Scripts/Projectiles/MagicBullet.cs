@@ -31,16 +31,19 @@ public class MagicBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IEnemy enemy = collision.GetComponent<IEnemy>();
-        Rigidbody2D enemyrb = collision.GetComponent<Rigidbody2D>();
-        if (enemy != null)
+        if (collision.tag.Equals("Enemy"))
         {
-            enemy.TakeDamage(damage);
-            DamagePopUp.Instantiate(enemy.Position, damage);
+            IEnemy enemy = collision.GetComponent<IEnemy>();
+            Rigidbody2D enemyrb = collision.GetComponent<Rigidbody2D>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                DamagePopUp.Instantiate(enemy.Position, damage);
 
-            enemy.Knockback(transform, knockbackPower);
+                enemy.Knockback(transform, knockbackPower);
 
-            damage = Mathf.CeilToInt(damage * damageReduction);
+                damage = Mathf.CeilToInt(damage * damageReduction);
+            }
         }
     }
 }

@@ -3,25 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerStatus : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private int maxHealthPoints = 10;
     [SerializeField] private int _healthPoints;
     public float GetHealthPointsNormalized { get { return (float) _healthPoints / maxHealthPoints; } }
 
     [SerializeField] private float moveSpeed = 1f;
-    public float GetMoveSpeed { get { return moveSpeed; } }
-
-    public UnityEvent OnBegin, OnDone;
+    
+    public delegate void VoidDelegates();
+    public VoidDelegates OnBeginKnockback, OnDoneKnockback;
 
     private Rigidbody2D _rb2D;
+    private Animator _animator;
+    private CharacterController2D _controller2D;
+
+    void Awake()
+    {
+        _rb2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _controller2D = GetComponent<CharacterController2D>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        _rb2D = GetComponent<Rigidbody2D>();
-
         _healthPoints = maxHealthPoints;
+
+        OnBeginKnockback += KnockbackEffect;
+
+        _controller2D.ExternalMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -43,23 +54,29 @@ public class PlayerStatus : MonoBehaviour
     public void Knockback(Transform dealer, float knockbackPower)
     {
         StopAllCoroutines();
-        OnBegin?.Invoke();
+        OnBeginKnockback?.Invoke();
 
         Vector2 direction = (transform.position - dealer.position).normalized;
         _rb2D.AddForce(direction * knockbackPower, ForceMode2D.Impulse);
 
-        StartCoroutine(RecoverFromKnockback(0.5f));
+        float knockbackDelay = 0.5f;
+        StartCoroutine(RecoverFromKnockback(knockbackDelay));
     }
 
     private IEnumerator RecoverFromKnockback(float delay)
     {
         yield return new WaitForSeconds(delay);
         _rb2D.velocity = Vector2.zero;
-        OnDone?.Invoke();
+        OnDoneKnockback?.Invoke();
     }
 
     public void Death()
     {
         Debug.Log("DEAD");
+    }
+
+    private void KnockbackEffect()
+    {
+        _animator.Play(_controller2D.Anim_HurtDown.name);
     }
 }

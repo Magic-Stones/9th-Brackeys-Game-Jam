@@ -30,6 +30,7 @@ public class GameAssets : MonoBehaviour
         }
     }
 
-    public Transform damagePopUpPrefab;
-    public Transform dialogueBubblePrefab;
+    [SerializeField] private List<GameObject> _prefabAssets;
+
+    public Transform DamagePopUpAsset { get { return _prefabAssets[0].transform; } }
 }

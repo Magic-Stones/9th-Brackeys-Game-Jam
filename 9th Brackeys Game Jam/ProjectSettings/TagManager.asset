@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cursed Tree
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - UI
   - Cursed Tree
   - Tree of Life
-  - 
+  - Sprout
   - 
   - 
   - 
@@ -45,20 +46,11 @@ TagManager:
   - name: Ground
     uniqueID: 3467393371
     locked: 0
-  - name: Tree
-    uniqueID: 2241449715
-    locked: 0
-  - name: Enemy
-    uniqueID: 2079359653
+  - name: Foreground
+    uniqueID: 2731478735
     locked: 0
   - name: Projectiles
     uniqueID: 4039042439
-    locked: 0
-  - name: Player
-    uniqueID: 2275991197
-    locked: 0
-  - name: Foreground
-    uniqueID: 2731478735
     locked: 0
   - name: Damage Pop Up Text
     uniqueID: 2744441549

@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2740067950784226355}
   - component: {fileID: 4526469455300542048}
   - component: {fileID: 8096889436014985697}
-  - component: {fileID: 1597378533302148428}
-  - component: {fileID: 412023928416149995}
-  - component: {fileID: 1049820725606261940}
+  - component: {fileID: 5390087573245557821}
   - component: {fileID: -6896307931977053841}
+  - component: {fileID: 1049820725606261940}
+  - component: {fileID: 412023928416149995}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1563488561
-  m_SortingLayer: 6
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 9fedf7944c01ac545a6e6b571c79df04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -159,7 +159,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1597378533302148428
+--- !u!114 &5390087573245557821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +168,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 821378328810828812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9960ef778e3cd3439f5e4a854067d21, type: 3}
+  m_Script: {fileID: 11500000, guid: d72d9d2b29dab6f40a1ab5c5e9554266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &412023928416149995
+  animationClips:
+  - {fileID: 7400000, guid: 0e57c70f1d97fab46b5b005200506ceb, type: 2}
+  - {fileID: 7400000, guid: abbdbe80f8fab9b41bc07be2e915dc53, type: 2}
+  - {fileID: 7400000, guid: 25f4185b0389ecd45b701ded9ee7c32b, type: 2}
+--- !u!114 &-6896307931977053841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,21 +184,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 821378328810828812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6134e9d0be2a4f46b2a6e12f2ee3e26, type: 3}
+  m_Script: {fileID: 11500000, guid: 93c25c1f2902b634b907bd0aa49771a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 1
-  faceUp: {fileID: 7400000, guid: 0e57c70f1d97fab46b5b005200506ceb, type: 2}
-  faceDown: {fileID: 7400000, guid: abbdbe80f8fab9b41bc07be2e915dc53, type: 2}
-  aimPoint: {fileID: 5792846054308216403}
-  bulletPrefab: {fileID: 886542063707561484, guid: ba5d4c42724776446b91dd58597cecdc, type: 3}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  _triggerChopRange: 1
-  _cursedTreeLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  setSortingOrder: 5000
+  sortOffset: 10
 --- !u!114 &1049820725606261940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,37 +204,7 @@ MonoBehaviour:
   maxHealthPoints: 10
   _healthPoints: 10
   moveSpeed: 5
-  OnBegin:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1597378533302148428}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnDone:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1597378533302148428}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &-6896307931977053841
+--- !u!114 &412023928416149995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,12 +213,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 821378328810828812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c25c1f2902b634b907bd0aa49771a7, type: 3}
+  m_Script: {fileID: 11500000, guid: c6134e9d0be2a4f46b2a6e12f2ee3e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingOrder: 5000
-  offsetSorting: 10
-  runOnce: 0
+  attackRate: 1
+  aimPoint: {fileID: 5792846054308216403}
+  bulletPrefab: {fileID: 886542063707561484, guid: ba5d4c42724776446b91dd58597cecdc, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &7610400301302506262
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,9 +324,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2018976099
-  m_SortingLayer: 5
-  m_SortingOrder: 11
+  m_SortingLayerID: -1563488561
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 284e2dea81e58554c90eda01c4fffc19, type: 3}
   m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_FlipX: 0

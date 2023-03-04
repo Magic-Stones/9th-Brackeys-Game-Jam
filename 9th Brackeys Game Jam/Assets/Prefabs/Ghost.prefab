@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -6459101866073635086}
   m_Layer: 3
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1563488561
-  m_SortingLayer: 6
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 38ac355b737889f4aaa2ce12da380045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,7 +173,7 @@ MonoBehaviour:
   moveSpeed: 3
   damage: 1
   knockbackPower: 25
-  targetObject: {fileID: 821378328810828812, guid: 5787240ee22ae4143a0bd09f9a311d3f, type: 3}
+  setTarget: {fileID: 821378328810828812, guid: 5787240ee22ae4143a0bd09f9a311d3f, type: 3}
   faceUp: {fileID: 7400000, guid: d66e49a7140dd0c4d88854485c57b8da, type: 2}
   faceDown: {fileID: 7400000, guid: cdf37c172bd06784a8f355777dc92b12, type: 2}
   lootDrop: {fileID: 886542063707561484, guid: 9ef4ca9c3b89c0e44a584d3a8d58973c, type: 3}
@@ -189,9 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c25c1f2902b634b907bd0aa49771a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingOrder: 5000
-  offsetSorting: 10
-  runOnce: 0
+  setSortingOrder: 5000
+  sortOffset: 1
 --- !u!1001 &4568652387593109978
 PrefabInstance:
   m_ObjectHideFlags: 0

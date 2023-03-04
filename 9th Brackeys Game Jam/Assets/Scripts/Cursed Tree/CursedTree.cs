@@ -11,9 +11,6 @@ public class CursedTree : MonoBehaviour
     public delegate void VoidDelegates();
     public VoidDelegates OnTreeDestroy;
 
-    private float reduceHealth = 1f;
-    public GameObject axe;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,16 +27,10 @@ public class CursedTree : MonoBehaviour
     {
         _healthPoints -= amount;
 
-        if (_healthPoints <= 0)
+        if (_healthPoints < 1)
         {
             Death();
         }
-    }
-
-    public void ChopTree()
-    {
-        reduceHealth -= Time.deltaTime;
-        _healthPoints = (int) reduceHealth;
     }
 
     private void Death()
