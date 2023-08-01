@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 1f;
     
-    public delegate void VoidDelegates();
-    public VoidDelegates OnBeginKnockback, OnDoneKnockback;
+    public delegate void EventDel();
+    public EventDel OnBeginKnockback, OnDoneKnockback;
 
     private Rigidbody2D _rb2D;
     private Animator _animator;

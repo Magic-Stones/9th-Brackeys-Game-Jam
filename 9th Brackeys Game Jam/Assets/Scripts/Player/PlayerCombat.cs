@@ -18,8 +18,8 @@ public class PlayerCombat : MonoBehaviour
     private Transform _aimHandle;
     private bool disableAnimations = false;
 
-    public delegate void VoidDelegates();
-    public VoidDelegates OnAttacking;
+    public delegate void EventDel();
+    public EventDel OnAttacking;
     private bool _activeOnAttacking = false;
 
     [Header("Instantiate Bullet")]
